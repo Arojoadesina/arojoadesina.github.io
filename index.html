@@ -8,148 +8,145 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .glass-card {
-            background: rgba(30, 41, 59, 0.7); /* Darker semi-transparent slate */
+            background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(71, 85, 105, 0.3);
         }
         html { scroll-behavior: smooth; }
-        
-        /* Custom scrollbar for dark theme */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
+        
+        /* Sticky sidebar for desktop */
+        @media (min-width: 768px) {
+            .sticky-sidebar {
+                position: sticky;
+                top: 2rem;
+                height: fit-content;
+            }
+        }
     </style>
 </head>
-<body class="bg-[#0f172a] text-slate-200 font-sans">
+<body class="bg-[#0f172a] text-slate-200 font-sans p-4 md:p-8">
 
-    <nav class="fixed w-full z-50 bg-[#0f172a]/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <span class="font-bold text-xl tracking-tight text-emerald-500">ADESINA S. AROJO</span>
-            <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase">
-                <a href="#about" class="hover:text-emerald-400 transition">About</a>
-                <a href="#businesses" class="hover:text-emerald-400 transition">Ventures</a>
-                <a href="#cv" class="hover:text-emerald-400 transition">Experience</a>
-                <a href="#contact" class="bg-emerald-600 text-white px-5 py-2 rounded-full hover:bg-emerald-500 transition shadow-lg shadow-emerald-900/20">Contact Me</a>
-            </div>
-        </div>
-    </nav>
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+        
+        <aside class="w-full md:w-1/3 lg:w-1/4">
+            <div class="sticky-sidebar space-y-6">
+                <div class="glass-card rounded-3xl overflow-hidden p-6 text-center shadow-2xl">
+                    <div class="relative w-48 h-48 mx-auto mb-6 rounded-2xl overflow-hidden border-2 border-emerald-500/30">
+                        <img src="portrait.jpg" alt="Adesina S. Arojo" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="text-2xl font-bold text-white mb-1">Adesina S. Arojo</h1>
+                    <p class="text-emerald-400 font-medium text-sm mb-4">Founder @ Techstudio316</p>
+                    
+                    <div class="space-y-3 text-left text-sm border-t border-slate-700 pt-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-emerald-500 w-4"></i>
+                            <span class="truncate">arojoadesinasunday@gmail.com</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fab fa-whatsapp text-emerald-500 w-4"></i>
+                            <span>+234 803 686 9352</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt text-emerald-500 w-4"></i>
+                            <span>Akure, Nigeria</span>
+                        </div>
+                    </div>
 
-    <header id="about" class="pt-32 pb-20 px-4">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl bg-slate-800">
-                    <img src="portrait.jpg" alt="Adesina S. Arojo" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                    <div class="flex justify-center gap-4 mt-6">
+                        <a href="https://github.com/arojoadesina" class="text-slate-400 hover:text-emerald-500 transition"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="https://www.linkedin.com/in/sunday-adesina-arojo-b2173b71/" class="text-slate-400 hover:text-blue-500 transition"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Core Expertise</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-emerald-900/40 text-emerald-400 px-3 py-1 rounded-full text-xs border border-emerald-500/20">Agro-Economics</span>
+                        <span class="bg-blue-900/40 text-blue-400 px-3 py-1 rounded-full text-xs border border-blue-500/20">Full-Stack Dev</span>
+                        <span class="bg-purple-900/40 text-purple-400 px-3 py-1 rounded-full text-xs border border-purple-500/20">Astro & Tailwind</span>
+                        <span class="bg-slate-700 text-slate-300 px-3 py-1 rounded-full text-xs">PMP Certified</span>
+                    </div>
                 </div>
             </div>
-            <div class="flex-1 text-center md:text-left">
-                <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">Adesina S. Arojo</h1>
-                <p class="text-xl text-emerald-400 font-semibold mb-6">Founder @ Techstudio316 | Agricultural Economist | Project Manager</p>
-                <p class="text-slate-400 leading-relaxed max-w-2xl mb-8 text-lg">
+        </aside>
+
+        <main class="flex-1 space-y-8">
+            
+            <nav class="flex gap-8 border-b border-slate-800 pb-2 overflow-x-auto">
+                <a href="#about" class="text-emerald-500 border-b-2 border-emerald-500 pb-2 font-bold whitespace-nowrap">OVERVIEW</a>
+                <a href="#ventures" class="text-slate-400 hover:text-white transition whitespace-nowrap">VENTURES</a>
+                <a href="#experience" class="text-slate-400 hover:text-white transition whitespace-nowrap">EXPERIENCE</a>
+                <a href="#education" class="text-slate-400 hover:text-white transition whitespace-nowrap">EDUCATION</a>
+            </nav>
+
+            <section id="about" class="space-y-4">
+                <h2 class="text-3xl font-bold text-white">Professional Profile</h2>
+                <div class="glass-card p-8 rounded-2xl leading-relaxed text-slate-300 text-lg">
                     A multi-disciplinary professional blending full-stack software development with agricultural economics. I leverage technical expertise and certified project management skills to drive innovation in the digital and agro-sectors.
-                </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                    <a href="#cv" class="bg-white text-slate-900 px-8 py-3 rounded-lg font-bold hover:bg-emerald-500 hover:text-white transition">View CV</a>
-                    <a href="https://www.linkedin.com/in/sunday-adesina-arojo-b2173b71/" target="_blank" class="border-2 border-slate-700 text-slate-300 px-8 py-3 rounded-lg font-bold hover:border-emerald-500 hover:text-emerald-500 transition">LinkedIn Profile</a>
                 </div>
-            </div>
-        </div>
-    </header>
+            </section>
 
-    <section id="businesses" class="py-20 bg-[#0b1222] px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center text-white">Business Portfolio</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass-card p-8 rounded-2xl shadow-xl hover:translate-y-[-4px] transition duration-300">
-                    <div class="w-12 h-12 bg-blue-900/30 text-blue-400 rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-code fa-lg"></i>
+            <section id="ventures" class="space-y-6 pt-6">
+                <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4">Business Portfolio</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="glass-card p-6 rounded-2xl group hover:border-emerald-500/50 transition">
+                        <h3 class="text-xl font-bold text-white mb-2">Techstudio316</h3>
+                        <p class="text-sm text-slate-400 mb-4">Leading full-stack software development, specializing in Astro, Tailwind CSS, and digital marketing systems.</p>
+                        <a href="https://techstudio316.github.io" class="text-emerald-400 text-sm font-bold flex items-center gap-2">
+                            Launch Site <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2 text-white">Techstudio316</h3>
-                    <p class="text-slate-400 mb-6">Leading full-stack software development, specializing in Astro, Tailwind CSS, and digital marketing systems.</p>
-                    <a href="https://techstudio316.github.io" target="_blank" class="text-emerald-400 font-bold flex items-center gap-2 hover:text-emerald-300 transition">
-                        Launch Site <i class="fas fa-external-link-alt text-sm"></i>
-                    </a>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl shadow-xl hover:translate-y-[-4px] transition duration-300">
-                    <div class="w-12 h-12 bg-emerald-900/30 text-emerald-400 rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-seedling fa-lg"></i>
+                    <div class="glass-card p-6 rounded-2xl group hover:border-emerald-500/50 transition">
+                        <h3 class="text-xl font-bold text-white mb-2">All Green Revolution</h3>
+                        <p class="text-sm text-slate-400 mb-4">A digital platform dedicated to agricultural extension, livestock management, and sustainable yield strategies.</p>
+                        <a href="https://allgreenrevolution.wordpress.com/" class="text-emerald-400 text-sm font-bold flex items-center gap-2">
+                            Read More <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2 text-white">All Green Revolution</h3>
-                    <p class="text-slate-400 mb-6">A digital platform dedicated to agricultural extension, livestock management, and sustainable yield strategies.</p>
-                    <a href="https://allgreenrevolution.wordpress.com/" target="_blank" class="text-emerald-400 font-bold flex items-center gap-2 hover:text-emerald-300 transition">
-                        Read More <i class="fas fa-external-link-alt text-sm"></i>
-                    </a>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <section id="cv" class="py-20 px-4 bg-[#0f172a]">
-        <div class="max-w-4xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 mb-16">
+            <section id="experience" class="space-y-6 pt-6">
+                <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4">Experience</h2>
+                <div class="space-y-4">
+                    <div class="glass-card p-6 rounded-2xl relative">
+                        <span class="text-xs font-bold text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded">Current</span>
+                        <h4 class="text-lg font-bold text-white mt-2">Lead Developer & Founder — Techstudio316</h4>
+                        <p class="text-slate-400 text-sm mt-2">Managing software lifecycles, web app development, and UI/UX design using modern frameworks like Astro and Tailwind.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <span class="text-xs font-bold text-slate-400 uppercase">Leadership</span>
+                        <h4 class="text-lg font-bold text-white mt-2">Local Representative — YPARD</h4>
+                        <p class="text-slate-400 text-sm mt-2">Advocating for youth involvement in the agro-sector at Kogi State University.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="grid md:grid-cols-2 gap-8 pt-6">
                 <div>
-                    <h3 class="text-xl font-bold text-emerald-500 uppercase tracking-widest mb-8 border-l-4 border-emerald-500 pl-4">Education</h3>
-                    <div class="relative pl-8 border-l border-slate-800">
-                        <div class="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[6.5px] top-2 shadow-[0_0_10px_#10b981]"></div>
-                        <h4 class="text-lg font-bold text-white">B.Agric. Agricultural Economics & Extension</h4>
-                        <p class="text-slate-500">Kogi State University</p>
+                    <h2 class="text-xl font-bold text-white mb-4">Education</h2>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h4 class="font-bold text-white text-sm">B.Agric. Agricultural Economics & Extension</h4>
+                        <p class="text-slate-500 text-xs">Kogi State University</p>
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-emerald-500 uppercase tracking-widest mb-8 border-l-4 border-emerald-500 pl-4">Certifications</h3>
-                    <div class="relative pl-8 border-l border-slate-800">
-                        <div class="absolute w-3 h-3 bg-blue-500 rounded-full -left-[6.5px] top-2 shadow-[0_0_10px_#3b82f6]"></div>
-                        <h4 class="text-lg font-bold text-white">Project Management Professional</h4>
-                        <p class="text-slate-500">British Project Management Institute, England</p>
+                    <h2 class="text-xl font-bold text-white mb-4">Certifications</h2>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h4 class="font-bold text-white text-sm">Project Management Professional</h4>
+                        <p class="text-slate-500 text-xs">British Project Management Institute</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div>
-                <h3 class="text-xl font-bold text-emerald-500 uppercase tracking-widest mb-8 border-l-4 border-emerald-500 pl-4">Experience</h3>
-                <div class="space-y-12">
-                    <div class="relative pl-8 border-l border-slate-800">
-                        <div class="absolute w-3 h-3 bg-slate-600 rounded-full -left-[6.5px] top-2"></div>
-                        <span class="text-sm font-bold text-emerald-500">Current</span>
-                        <h4 class="text-lg font-bold text-white">Lead Developer & Founder — Techstudio316</h4>
-                        <p class="text-slate-400 mt-2">Managing software lifecycles, web app development, and UI/UX design using modern frameworks like Astro and Tailwind.</p>
-                    </div>
-
-                    <div class="relative pl-8 border-l border-slate-800">
-                        <div class="absolute w-3 h-3 bg-slate-600 rounded-full -left-[6.5px] top-2"></div>
-                        <span class="text-sm font-bold text-slate-500">Leadership</span>
-                        <h4 class="text-lg font-bold text-white">Local Representative — YPARD</h4>
-                        <p class="text-slate-400 mt-2">Advocating for youth involvement in the agro-sector at Kogi State University.</p>
-                    </div>
-
-                    <div class="relative pl-8 border-l border-slate-800">
-                        <div class="absolute w-3 h-3 bg-slate-600 rounded-full -left-[6.5px] top-2"></div>
-                        <span class="text-sm font-bold text-slate-500">Agro-Operations</span>
-                        <h4 class="text-lg font-bold text-white">Extension Officer & Farm Supervisor</h4>
-                        <p class="text-slate-400 mt-2">Yield management and extension services with ADP and Zenababs Farm.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact" class="bg-[#0b1222] text-white py-16 px-4 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4">Let's Work Together</h2>
-            <p class="text-slate-400 mb-8 max-w-md mx-auto">Available for technical development, agricultural consultancy, and project management.</p>
-            <div class="flex justify-center gap-6 mb-12">
-                <a href="https://github.com/arojoadesina" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-emerald-600 transition shadow-lg"><i class="fab fa-github"></i></a>
-                
-                <a href="https://www.linkedin.com/in/sunday-adesina-arojo-b2173b71/" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 transition shadow-lg"><i class="fab fa-linkedin"></i></a>
-                
-                <a href="https://wa.me/2348036869352" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-500 transition shadow-lg"><i class="fab fa-whatsapp text-xl"></i></a>
-                
-                <a href="mailto:arojoadesinasunday@gmail.com" class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-emerald-600 transition shadow-lg"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p class="text-slate-500 text-sm">© 2026 Adesina S. Arojo | Built with Tailwind CSS</p>
-        </div>
-    </footer>
+            <footer class="pt-12 text-center text-slate-500 text-xs">
+                © 2026 Adesina S. Arojo | Built with Tailwind CSS
+            </footer>
+        </main>
+    </div>
 
 </body>
 </html>
