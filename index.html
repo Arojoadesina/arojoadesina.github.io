@@ -17,7 +17,6 @@
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
         
-        /* Sticky sidebar for desktop */
         @media (min-width: 768px) {
             .sticky-sidebar {
                 position: sticky;
@@ -43,7 +42,7 @@
                     <div class="space-y-3 text-left text-sm border-t border-slate-700 pt-4">
                         <div class="flex items-center gap-3">
                             <i class="fas fa-envelope text-emerald-500 w-4"></i>
-                            <span class="truncate">arojoadesinasunday@gmail.com</span>
+                            <span class="truncate text-xs">arojoadesinasunday@gmail.com</span>
                         </div>
                         <div class="flex items-center gap-3">
                             <i class="fab fa-whatsapp text-emerald-500 w-4"></i>
@@ -64,23 +63,22 @@
                 <div class="glass-card rounded-2xl p-6">
                     <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Core Expertise</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-emerald-900/40 text-emerald-400 px-3 py-1 rounded-full text-xs border border-emerald-500/20">Agro-Economics</span>
-                        <span class="bg-blue-900/40 text-blue-400 px-3 py-1 rounded-full text-xs border border-blue-500/20">Full-Stack Dev</span>
-                        <span class="bg-purple-900/40 text-purple-400 px-3 py-1 rounded-full text-xs border border-purple-500/20">Astro & Tailwind</span>
-                        <span class="bg-slate-700 text-slate-300 px-3 py-1 rounded-full text-xs">PMP Certified</span>
+                        <span class="bg-emerald-900/40 text-emerald-400 px-3 py-1 rounded-full text-[10px] border border-emerald-500/20 uppercase font-bold tracking-tighter">Agro-Economics</span>
+                        <span class="bg-blue-900/40 text-blue-400 px-3 py-1 rounded-full text-[10px] border border-blue-500/20 uppercase font-bold tracking-tighter">GIS Mapping</span>
+                        <span class="bg-purple-900/40 text-purple-400 px-3 py-1 rounded-full text-[10px] border border-purple-500/20 uppercase font-bold tracking-tighter">Full-Stack Dev</span>
+                        <span class="bg-slate-700 text-slate-300 px-3 py-1 rounded-full text-[10px] uppercase font-bold tracking-tighter">AI Diagnostic</span>
                     </div>
                 </div>
             </div>
         </aside>
 
-        <main class="flex-1 space-y-8">
+        <main class="flex-1 space-y-12">
             
             <nav class="flex gap-6 border-b border-slate-800 pb-2 overflow-x-auto">
-                <a href="#about" class="text-emerald-500 border-b-2 border-emerald-500 pb-2 font-bold whitespace-nowrap text-sm">OVERVIEW</a>
-                <a href="#research" class="text-slate-400 hover:text-white transition whitespace-nowrap text-sm font-bold">RESEARCH</a>
-                <a href="#ventures" class="text-slate-400 hover:text-white transition whitespace-nowrap text-sm font-bold">VENTURES</a>
-                <a href="#experience" class="text-slate-400 hover:text-white transition whitespace-nowrap text-sm font-bold">EXPERIENCE</a>
-                <a href="#education" class="text-slate-400 hover:text-white transition whitespace-nowrap text-sm font-bold">EDUCATION</a>
+                <a href="#about" class="text-emerald-500 border-b-2 border-emerald-500 pb-2 font-bold whitespace-nowrap text-xs tracking-widest uppercase">Overview</a>
+                <a href="#projects" class="text-slate-400 hover:text-white transition whitespace-nowrap text-xs font-bold tracking-widest uppercase">Featured Projects</a>
+                <a href="#research" class="text-slate-400 hover:text-white transition whitespace-nowrap text-xs font-bold tracking-widest uppercase">Research</a>
+                <a href="#experience" class="text-slate-400 hover:text-white transition whitespace-nowrap text-xs font-bold tracking-widest uppercase">Experience</a>
             </nav>
 
             <section id="about" class="space-y-4">
@@ -90,89 +88,115 @@
                 </div>
             </section>
 
-            <section id="research" class="space-y-6 pt-6">
-                <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4">Research & Thesis</h2>
-                <div class="glass-card p-8 rounded-2xl">
-                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Assessment of the Awareness and use of Information and communication Technologies among small scale farmers</h3>
-                            <p class="text-emerald-400 text-sm font-medium">Undergraduate Thesis | Kogi State University</p>
-                        </div>
-                    </div>
-                    <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
-                        <p><strong class="text-slate-100">Abstract:</strong> My findings: Small Scale farmers are late adopters of technologies</p>
-                        <div class="grid md:grid-cols-2 gap-4 pt-2">
-                            <div class="bg-[#0f172a]/50 p-4 rounded-xl border border-slate-700">
-                                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Methodologies</h4>
-                                <ul class="list-disc list-inside text-xs space-y-1 text-slate-400">
-                                    <li>Data Collection</li>
-                                    <li>Statistical Analysis</li>
-                                    <li>Field Survey</li>
-                                </ul>
+            <section id="projects" class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4 uppercase tracking-wider">Featured: DigiFarms</h2>
+                    <span class="bg-emerald-500 text-[#0f172a] text-[10px] font-black px-2 py-1 rounded">NEW PROJECT</span>
+                </div>
+                
+                <div class="glass-card rounded-2xl overflow-hidden border border-emerald-500/20">
+                    <div class="p-8 space-y-6">
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <div class="bg-emerald-900/30 p-3 rounded-xl"><i class="fas fa-microchip text-emerald-400 text-2xl"></i></div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white uppercase">Smart Agricultural Management App</h3>
+                                <p class="text-slate-400 text-sm italic">Bridging the gap between smallholder farmers and extension services.</p>
                             </div>
-                            <div class="bg-[#0f172a]/50 p-4 rounded-xl border border-slate-700">
-                                <h4 class="text-emerald-400 font-bold text-xs uppercase mb-2">Key Outcome</h4>
-                                <p class="text-xs text-slate-400"></p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/50">
+                                <h4 class="text-emerald-400 font-bold text-[10px] mb-2 uppercase">GIS Mapping</h4>
+                                <p class="text-[11px] text-slate-300">Geolocated plots for regional heat-maps and harvest prediction for ADP agencies.</p>
+                            </div>
+                            <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/50">
+                                <h4 class="text-emerald-400 font-bold text-[10px] mb-2 uppercase">AI Diagnosis</h4>
+                                <p class="text-[11px] text-slate-300">"Farm Doctor" text/vision engine identifying tropical crop diseases offline-first.</p>
+                            </div>
+                            <div class="bg-slate-800/40 p-4 rounded-xl border border-slate-700/50">
+                                <h4 class="text-emerald-400 font-bold text-[10px] mb-2 uppercase">Weather Logic</h4>
+                                <p class="text-[11px] text-slate-300">OpenWeather API integration driving smart task calendars for field ops.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <h4 class="text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                                <i class="fas fa-database text-blue-400"></i> Technical Architecture
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-slate-900 px-3 py-1 rounded-md text-[10px] text-slate-400 border border-slate-800">MySQL Relational Schema</span>
+                                <span class="bg-slate-900 px-3 py-1 rounded-md text-[10px] text-slate-400 border border-slate-800">Bootstrap 5 Dashboard</span>
+                                <span class="bg-slate-900 px-3 py-1 rounded-md text-[10px] text-slate-400 border border-slate-800">RESTful API Architecture</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <section id="research" class="space-y-6 pt-6">
+                <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4 uppercase tracking-wider">Research & Thesis</h2>
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold text-white mb-1">[Insert Thesis Title Here]</h3>
+                    <p class="text-emerald-400 text-xs font-bold mb-4 uppercase tracking-wide">Undergraduate Thesis | Kogi State University</p>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6"><strong class="text-slate-100 italic font-medium">Abstract:</strong> Briefly describe your thesis findings and the core problem you addressed in Agricultural Economics.</p>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <div class="bg-blue-900/10 border border-blue-500/20 px-4 py-2 rounded-lg text-[11px]"><i class="fas fa-check-circle text-blue-400 mr-2"></i>Data Collection</div>
+                        <div class="bg-blue-900/10 border border-blue-500/20 px-4 py-2 rounded-lg text-[11px]"><i class="fas fa-check-circle text-blue-400 mr-2"></i>Regression Analysis</div>
+                    </div>
+                </div>
+            </section>
+
             <section id="ventures" class="space-y-6 pt-6">
-                <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4">Business Portfolio</h2>
+                <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4 uppercase tracking-wider">Business Portfolio</h2>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="glass-card p-6 rounded-2xl group hover:border-emerald-500/50 transition">
+                    <div class="glass-card p-6 rounded-2xl group border-l-2 border-transparent hover:border-emerald-500 transition">
                         <h3 class="text-xl font-bold text-white mb-2">Techstudio316</h3>
                         <p class="text-sm text-slate-400 mb-4">Leading full-stack software development, specializing in Astro, Tailwind CSS, and digital marketing systems.</p>
-                        <a href="https://techstudio316.github.io" class="text-emerald-400 text-sm font-bold flex items-center gap-2">
-                            Launch Site <i class="fas fa-external-link-alt text-xs"></i>
+                        <a href="https://techstudio316.github.io" class="text-emerald-400 text-xs font-black uppercase tracking-widest flex items-center gap-2">
+                            Launch Site <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
-                    <div class="glass-card p-6 rounded-2xl group hover:border-emerald-500/50 transition">
+                    <div class="glass-card p-6 rounded-2xl group border-l-2 border-transparent hover:border-emerald-500 transition">
                         <h3 class="text-xl font-bold text-white mb-2">All Green Revolution</h3>
                         <p class="text-sm text-slate-400 mb-4">A digital platform dedicated to agricultural extension, livestock management, and sustainable yield strategies.</p>
-                        <a href="https://allgreenrevolution.wordpress.com/" class="text-emerald-400 text-sm font-bold flex items-center gap-2">
-                            Read More <i class="fas fa-external-link-alt text-xs"></i>
+                        <a href="https://allgreenrevolution.wordpress.com/" class="text-emerald-400 text-xs font-black uppercase tracking-widest flex items-center gap-2">
+                            Read More <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
                 </div>
             </section>
 
             <section id="experience" class="space-y-6 pt-6">
-                <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4">Experience</h2>
+                <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4 uppercase tracking-wider">Experience</h2>
                 <div class="space-y-4">
                     <div class="glass-card p-6 rounded-2xl relative">
-                        <span class="text-xs font-bold text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded">Current</span>
+                        <span class="text-[10px] font-black text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded uppercase">Current</span>
                         <h4 class="text-lg font-bold text-white mt-2">Lead Developer & Founder — Techstudio316</h4>
                         <p class="text-slate-400 text-sm mt-2">Managing software lifecycles, web app development, and UI/UX design using modern frameworks like Astro and Tailwind.</p>
                     </div>
                     <div class="glass-card p-6 rounded-2xl">
-                        <span class="text-xs font-bold text-slate-400 uppercase">Leadership</span>
+                        <span class="text-[10px] font-black text-slate-500 uppercase">Leadership</span>
                         <h4 class="text-lg font-bold text-white mt-2">Local Representative — YPARD</h4>
                         <p class="text-slate-400 text-sm mt-2">Advocating for youth involvement in the agro-sector at Kogi State University.</p>
                     </div>
                 </div>
             </section>
 
-            <section id="education" class="grid md:grid-cols-2 gap-8 pt-6">
-                <div>
-                    <h2 class="text-xl font-bold text-white mb-4">Education</h2>
-                    <div class="glass-card p-6 rounded-2xl">
-                        <h4 class="font-bold text-white text-sm">B.Agric. Agricultural Economics & Extension</h4>
-                        <p class="text-slate-500 text-xs">Kogi State University</p>
-                    </div>
+            <section id="education" class="grid md:grid-cols-2 gap-6 pt-6 pb-12">
+                <div class="glass-card p-6 rounded-2xl">
+                    <h2 class="text-sm font-bold text-white mb-4 uppercase tracking-[0.2em] text-emerald-500">Education</h2>
+                    <h4 class="font-bold text-white text-sm uppercase">B.Agric. Agricultural Economics & Extension</h4>
+                    <p class="text-slate-500 text-xs">Kogi State University</p>
                 </div>
-                <div>
-                    <h2 class="text-xl font-bold text-white mb-4">Certifications</h2>
-                    <div class="glass-card p-6 rounded-2xl">
-                        <h4 class="font-bold text-white text-sm">Project Management Professional</h4>
-                        <p class="text-slate-500 text-xs">British Project Management Institute</p>
-                    </div>
+                <div class="glass-card p-6 rounded-2xl">
+                    <h2 class="text-sm font-bold text-white mb-4 uppercase tracking-[0.2em] text-emerald-500">Certifications</h2>
+                    <h4 class="font-bold text-white text-sm uppercase">Project Management Professional</h4>
+                    <p class="text-slate-500 text-xs">British Project Management Institute</p>
                 </div>
             </section>
 
-            <footer class="pt-12 text-center text-slate-500 text-xs">
+            <footer class="pt-8 text-center text-slate-600 text-[10px] uppercase tracking-widest font-bold">
                 © 2026 Adesina S. Arojo | Built with Tailwind CSS
             </footer>
         </main>
