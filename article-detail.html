@@ -3,69 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adesina S. Arojo | Research</title>
+    <title>View Publication | Adesina S. Arojo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.3); }
-        body { background-color: #0f172a; }
-        .article-body p { margin-bottom: 1.5rem; color: #94a3b8; line-height: 1.8; font-size: 1.1rem; }
+        body { background-color: #0f172a; height: 100vh; display: flex; flex-direction: column; }
+        .viewer-container { flex-grow: 1; border-radius: 1.5rem; overflow: hidden; border: 1px solid rgba(16, 185, 129, 0.2); }
     </style>
 </head>
-<body class="text-slate-200 p-4 md:p-8">
-    <div class="max-w-3xl mx-auto">
-        <a href="publications.html" class="text-emerald-500 text-xs font-bold uppercase tracking-widest mb-12 inline-block hover:gap-2">
-            <i class="fas fa-chevron-left mr-2"></i> All Publications
+<body class="text-slate-200 p-4 md:p-6">
+    
+    <!-- Top Navigation Bar -->
+    <div class="max-w-6xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 mb-6">
+        <a href="publications.html" class="text-emerald-500 text-xs font-bold uppercase tracking-widest hover:text-white transition">
+            <i class="fas fa-arrow-left mr-2"></i> Back to Library
         </a>
-
-        <div id="article-view">
-            <!-- JavaScript will inject content here -->
+        
+        <div class="flex gap-3">
+            <button onclick="share('whatsapp')" class="bg-slate-800 hover:bg-emerald-600 w-8 h-8 rounded-full transition text-sm"><i class="fab fa-whatsapp"></i></button>
+            <button onclick="share('twitter')" class="bg-slate-800 hover:bg-black w-8 h-8 rounded-full transition text-sm"><i class="fab fa-x-twitter"></i></button>
+            <a id="external-link" href="#" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold px-4 py-2 rounded-lg uppercase tracking-tighter transition">
+                Open in Academia.edu
+            </a>
         </div>
+    </div>
 
-        <!-- Shared Sharing Section (Stays constant) -->
-        <div class="mt-12 p-8 glass-card rounded-3xl border-t-4 border-t-emerald-500">
-            <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs text-center">Share this research</h4>
-            <div class="flex justify-center gap-6">
-                <button onclick="share('whatsapp')" class="text-slate-400 hover:text-emerald-500 transition text-2xl"><i class="fab fa-whatsapp"></i></button>
-                <button onclick="share('twitter')" class="text-slate-400 hover:text-white transition text-2xl"><i class="fab fa-x-twitter"></i></button>
-                <button onclick="share('facebook')" class="text-slate-400 hover:text-blue-500 transition text-2xl"><i class="fab fa-facebook-f"></i></button>
-                <button onclick="share('linkedin')" class="text-slate-400 hover:text-blue-400 transition text-2xl"><i class="fab fa-linkedin-in"></i></button>
+    <!-- Article Header Info -->
+    <div class="max-w-6xl mx-auto w-full mb-6">
+        <h1 id="paper-title" class="text-xl md:text-2xl font-bold text-white">Loading Paper...</h1>
+        <p id="paper-meta" class="text-emerald-400 text-[10px] uppercase font-bold mt-1 tracking-widest"></p>
+    </div>
+
+    <!-- THE VIEWER -->
+    <div class="max-w-6xl mx-auto w-full viewer-container glass-card">
+        <object id="pdf-viewer" data="" type="application/pdf" class="w-full h-full">
+            <div class="p-12 text-center">
+                <p class="mb-4">It looks like your browser doesn't support embedded PDFs.</p>
+                <a id="fallback-link" href="#" class="bg-emerald-600 text-white px-6 py-2 rounded-lg">Download PDF to Read</a>
             </div>
-        </div>
+        </object>
     </div>
 
     <script src="publications-data.js"></script>
     <script>
-        // 1. Get ID from URL
         const params = new URLSearchParams(window.location.search);
         const articleId = params.get('id');
         const article = publicationsData.find(p => p.id === articleId);
 
         if (article) {
-            document.title = `${article.title} | Research`;
-            document.getElementById('article-view').innerHTML = `
-                <header class="mb-10">
-                    <span class="text-emerald-500 text-[10px] font-black uppercase tracking-[0.3em]">${article.category}</span>
-                    <h1 class="text-3xl md:text-5xl font-bold text-white mt-4 leading-tight">${article.title}</h1>
-                    <div class="h-1 w-20 bg-emerald-500 mt-6"></div>
-                </header>
-                <div class="article-body">
-                    ${article.content}
-                </div>
-            `;
-        } else {
-            document.getElementById('article-view').innerHTML = `<h1 class="text-2xl">Publication not found.</h1>`;
+            document.title = `${article.title} | Reader`;
+            document.getElementById('paper-title').innerText = article.title;
+            document.getElementById('paper-meta').innerText = `${article.category} • ${article.year}`;
+            document.getElementById('external-link').href = article.academiaLink;
+            
+            // Set the PDF Source
+            const viewer = document.getElementById('pdf-viewer');
+            viewer.data = article.pdfPath;
+            document.getElementById('fallback-link').href = article.pdfPath;
         }
 
-        // Share Function
         function share(platform) {
             const url = encodeURIComponent(window.location.href);
             const text = encodeURIComponent(article ? article.title : "Research by Adesina S. Arojo");
             const links = {
                 whatsapp: `https://wa.me/?text=${text}%20${url}`,
-                twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
-                facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`
+                twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`
             };
             window.open(links[platform], '_blank');
         }
