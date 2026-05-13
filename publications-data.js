@@ -1,28 +1,34 @@
 const publicationsData = [
     {
-        id: "agric-framework-2024",
-        title: "A RELATIONAL FRAMEWORK FOR DISTRIBUTED AGRICULTURAL EXTENSION",
-        category: "Working Paper",
+        id: "cocoa-decline-ondo",
+        title: "FADING BROWN GOLD: A HISTORICAL AND CONTEMPORARY ANALYSIS OF THE DECLINE IN COCOA PRODUCTION IN ONDO STATE, NIGERIA",
+        category: "Historical & Economic Analysis",
         year: "2024",
-        excerpt: "Leveraging Laravel-MySQL architectures for longitudinal farm data tracking in Nigeria.",
-        academiaLink: "https://academia.edu/example1",
-        content: `
-            <p>The digitalization of agricultural extension services in Nigeria faces unique challenges, ranging from intermittent connectivity to varying literacy levels among smallholder farmers.</p>
-            <p>This framework proposes a distributed model where data is synchronized across regional nodes...</p>
-            <h3 class="text-xl font-bold text-white mt-6 mb-2">Methodology</h3>
-            <p>Using a Laravel-based backend, we implemented a queue system to handle data uploads in low-bandwidth environments...</p>
-        `
+        excerpt: "An in-depth study exploring the socio-economic factors and historical shifts leading to the decline of cocoa production in Nigeria's primary cocoa-producing belt.",
+        pdfPath: "pdfs/cocoa-decline-ondo.pdf", 
+        academiaLink: "https://www.academia.edu/167091836/FADING_BROWN_GOLD_A_HISTORICAL_AND_CONTEMPORARY_ANALYSIS_OF_THE_DECLINE_IN_COCOA_PRODUCTION_IN_ONDO_STATE_NIGERIA"
     },
     {
-        id: "ict-awareness-2022",
-        title: "THE ASSESSMENT OF THE AWARENESS AND USE OF ICT AMONG SMALL SCALE FARMERS",
+        id: "agric-extension-framework",
+        title: "A RELATIONAL FRAMEWORK FOR DISTRIBUTED AGRICULTURAL EXTENSION: LEVERAGING LARAVEL-MYSQL ARCHITECTURES FOR LONGITUDINAL FARM DATA TRACKING IN NIGERIA",
+        category: "Technical Research",
+        year: "2024",
+        excerpt: "Researching the intersection of full-stack development and agriculture, focusing on how robust database architectures can improve extension service delivery.",
+        pdfPath: "pdfs/agric-extension-framework.pdf",
+        academiaLink: "https://www.academia.edu/167091118/A_RELATIONAL_FRAMEWORK_FOR_DISTRIBUTED_AGRICULTURAL_EXTENSION_LEVERAGING_LARAVEL_MYSQL_ARCHITECTURES_FOR_LONGITUDINAL_FARM_DATA_TRACKING_IN_NIGERIA"
+    },
+    {
+        id: "ict-awareness-farmers",
+        title: "THE ASSESSMENT OF THE AWARENESS AND USE OF INFORMATION AND COMMUNICATION TECHNOLOGY AMONG SMALL SCALE FARMERS",
         category: "Undergraduate Thesis",
         year: "2022",
-        excerpt: "A comprehensive study on digital adoption conducted at Kogi State University.",
-        academiaLink: "", 
-        content: `
-            <p>This study investigated the level of awareness of Information and Communication Technology (ICT) among small-scale farmers in the surrounding areas of Kogi State University.</p>
-            <p>Findings suggested that while mobile phone penetration is high, the use of specialized agricultural apps remains low due to cost and technical barriers...</p>
-        `
+        excerpt: "Conducted at Kogi State University, this study evaluates digital literacy and ICT adoption rates among rural smallholder farmers.",
+        pdfPath: "pdfs/ict-awareness-farmers.pdf",
+        academiaLink: "" // Leave empty if not available online
     }
 ];
+
+// This makes the data available to your other HTML files
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = publicationsData;
+}
