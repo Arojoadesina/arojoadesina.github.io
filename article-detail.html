@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adesina S. Arojo | Research</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.3); }
+        body { background-color: #0f172a; }
+        .article-body p { margin-bottom: 1.5rem; color: #94a3b8; line-height: 1.8; font-size: 1.1rem; }
+    </style>
+</head>
+<body class="text-slate-200 p-4 md:p-8">
+    <div class="max-w-3xl mx-auto">
+        <a href="publications.html" class="text-emerald-500 text-xs font-bold uppercase tracking-widest mb-12 inline-block hover:gap-2">
+            <i class="fas fa-chevron-left mr-2"></i> All Publications
+        </a>
+
+        <div id="article-view">
+            <!-- JavaScript will inject content here -->
+        </div>
+
+        <!-- Shared Sharing Section (Stays constant) -->
+        <div class="mt-12 p-8 glass-card rounded-3xl border-t-4 border-t-emerald-500">
+            <h4 class="text-white font-bold mb-4 uppercase tracking-widest text-xs text-center">Share this research</h4>
+            <div class="flex justify-center gap-6">
+                <button onclick="share('whatsapp')" class="text-slate-400 hover:text-emerald-500 transition text-2xl"><i class="fab fa-whatsapp"></i></button>
+                <button onclick="share('twitter')" class="text-slate-400 hover:text-white transition text-2xl"><i class="fab fa-x-twitter"></i></button>
+                <button onclick="share('facebook')" class="text-slate-400 hover:text-blue-500 transition text-2xl"><i class="fab fa-facebook-f"></i></button>
+                <button onclick="share('linkedin')" class="text-slate-400 hover:text-blue-400 transition text-2xl"><i class="fab fa-linkedin-in"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="publications-data.js"></script>
+    <script>
+        // 1. Get ID from URL
+        const params = new URLSearchParams(window.location.search);
+        const articleId = params.get('id');
+        const article = publicationsData.find(p => p.id === articleId);
+
+        if (article) {
+            document.title = `${article.title} | Research`;
+            document.getElementById('article-view').innerHTML = `
+                <header class="mb-10">
+                    <span class="text-emerald-500 text-[10px] font-black uppercase tracking-[0.3em]">${article.category}</span>
+                    <h1 class="text-3xl md:text-5xl font-bold text-white mt-4 leading-tight">${article.title}</h1>
+                    <div class="h-1 w-20 bg-emerald-500 mt-6"></div>
+                </header>
+                <div class="article-body">
+                    ${article.content}
+                </div>
+            `;
+        } else {
+            document.getElementById('article-view').innerHTML = `<h1 class="text-2xl">Publication not found.</h1>`;
+        }
+
+        // Share Function
+        function share(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(article ? article.title : "Research by Adesina S. Arojo");
+            const links = {
+                whatsapp: `https://wa.me/?text=${text}%20${url}`,
+                twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`
+            };
+            window.open(links[platform], '_blank');
+        }
+    </script>
+</body>
+</html>
