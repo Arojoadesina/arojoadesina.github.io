@@ -3,69 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Publication | Adesina S. Arojo</title>
+    <title>Research Viewer | Adesina S. Arojo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.3); }
-        body { background-color: #0f172a; height: 100vh; display: flex; flex-direction: column; }
-        .viewer-container { flex-grow: 1; border-radius: 1.5rem; overflow: hidden; border: 1px solid rgba(16, 185, 129, 0.2); }
+        .glass-card { 
+            background: rgba(30, 41, 59, 0.7); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(71, 85, 105, 0.3); 
+        }
+        body { 
+            background-color: #0f172a; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden;
+        }
+        .viewer-container { 
+            flex-grow: 1; 
+            border-radius: 1.5rem; 
+            overflow: hidden; 
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            margin-bottom: 2rem;
+        }
+        /* Hide scrollbar for clean UI */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
     </style>
 </head>
 <body class="text-slate-200 p-4 md:p-6">
-    
+
     <!-- Top Navigation Bar -->
-    <div class="max-w-6xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 mb-6">
-        <a href="publications.html" class="text-emerald-500 text-xs font-bold uppercase tracking-widest hover:text-white transition">
+    <div class="max-w-6xl mx-auto w-full flex flex-wrap items-center justify-between gap-4 mb-4">
+        <a href="publications.html" class="text-emerald-500 text-xs font-bold uppercase tracking-widest hover:text-white transition flex items-center">
             <i class="fas fa-arrow-left mr-2"></i> Back to Library
         </a>
         
-        <div class="flex gap-3">
-            <button onclick="share('whatsapp')" class="bg-slate-800 hover:bg-emerald-600 w-8 h-8 rounded-full transition text-sm"><i class="fab fa-whatsapp"></i></button>
-            <button onclick="share('twitter')" class="bg-slate-800 hover:bg-black w-8 h-8 rounded-full transition text-sm"><i class="fab fa-x-twitter"></i></button>
-            <a id="external-link" href="#" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold px-4 py-2 rounded-lg uppercase tracking-tighter transition">
-                Open in Academia.edu
+        <div class="flex items-center gap-3">
+            <span class="text-slate-500 text-[10px] uppercase font-bold hidden sm:inline">Share:</span>
+            <button onclick="share('whatsapp')" class="text-slate-400 hover:text-emerald-500 transition"><i class="fab fa-whatsapp fa-lg"></i></button>
+            <button onclick="share('twitter')" class="text-slate-400 hover:text-white transition"><i class="fab fa-x-twitter fa-lg"></i></button>
+            <div class="h-4 w-px bg-slate-700 mx-2"></div>
+            <a id="external-link" href="#" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold px-4 py-2 rounded-lg uppercase tracking-tight transition flex items-center">
+                Academia.edu <i class="fas fa-external-link-alt ml-2"></i>
             </a>
         </div>
     </div>
 
-    <!-- Article Header Info -->
+    <!-- Article Header -->
     <div class="max-w-6xl mx-auto w-full mb-6">
-        <h1 id="paper-title" class="text-xl md:text-2xl font-bold text-white">Loading Paper...</h1>
-        <p id="paper-meta" class="text-emerald-400 text-[10px] uppercase font-bold mt-1 tracking-widest"></p>
+        <h1 id="paper-title" class="text-xl md:text-3xl font-bold text-white truncate">Loading Publication...</h1>
+        <div class="flex items-center gap-4 mt-2">
+            <p id="paper-meta" class="text-emerald-400 text-[10px] uppercase font-black tracking-widest"></p>
+            <span id="year-tag" class="bg-slate-800 text-slate-400 text-[9px] px-2 py-0.5 rounded border border-slate-700"></span>
+        </div>
     </div>
 
-    <!-- THE VIEWER -->
-    <div class="max-w-6xl mx-auto w-full viewer-container glass-card">
-        <object id="pdf-viewer" data="" type="application/pdf" class="w-full h-full">
-            <div class="p-12 text-center">
-                <p class="mb-4">It looks like your browser doesn't support embedded PDFs.</p>
-                <a id="fallback-link" href="#" class="bg-emerald-600 text-white px-6 py-2 rounded-lg">Download PDF to Read</a>
+    <!-- Main Viewer Area -->
+    <div class="max-w-6xl mx-auto w-full viewer-container glass-card relative">
+        <div id="loader" class="absolute inset-0 flex items-center justify-center bg-[#0f172a] z-10">
+            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
+        </div>
+        
+        <object id="pdf-object" data="" type="application/pdf" class="w-full h-full">
+            <!-- Fallback for browsers that don't support PDF embedding -->
+            <div class="flex flex-col items-center justify-center h-full p-10 text-center">
+                <i class="fas fa-file-pdf text-6xl text-slate-700 mb-6"></i>
+                <h3 class="text-xl font-bold text-white mb-2">PDF Embedding Not Supported</h3>
+                <p class="text-slate-400 mb-6 max-w-md">Your mobile device or browser doesn't support viewing PDFs directly. You can open the file in a new tab or download it.</p>
+                <div class="flex gap-4">
+                    <a id="fallback-btn" href="#" target="_blank" class="bg-emerald-600 text-white px-8 py-3 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-emerald-500 transition">
+                        Open in New Tab
+                    </a>
+                </div>
             </div>
         </object>
     </div>
 
     <script src="publications-data.js"></script>
     <script>
+        // 1. Fetch Publication Logic
         const params = new URLSearchParams(window.location.search);
         const articleId = params.get('id');
         const article = publicationsData.find(p => p.id === articleId);
 
+        const loader = document.getElementById('loader');
+        const pdfObject = document.getElementById('pdf-object');
+
         if (article) {
+            // Update Page Content
             document.title = `${article.title} | Reader`;
             document.getElementById('paper-title').innerText = article.title;
-            document.getElementById('paper-meta').innerText = `${article.category} • ${article.year}`;
-            document.getElementById('external-link').href = article.academiaLink;
+            document.getElementById('paper-meta').innerText = article.category;
+            document.getElementById('year-tag').innerText = article.year;
             
-            // Set the PDF Source
-            const viewer = document.getElementById('pdf-viewer');
-            viewer.data = article.pdfPath;
-            document.getElementById('fallback-link').href = article.pdfPath;
+            if(article.academiaLink) {
+                document.getElementById('external-link').href = article.academiaLink;
+            } else {
+                document.getElementById('external-link').style.display = 'none';
+            }
+
+            // Set PDF Source
+            pdfObject.data = article.pdfPath;
+            document.getElementById('fallback-btn').href = article.pdfPath;
+
+            // Hide loader once "loaded" (or after a slight delay)
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 1000);
+
+        } else {
+            // Error Handling
+            document.getElementById('paper-title').innerText = "Publication Not Found";
+            loader.innerHTML = `
+                <div class="text-center">
+                    <i class="fas fa-exclamation-triangle text-orange-500 text-4xl mb-4"></i>
+                    <p class="text-slate-400">The requested article could not be located.</p>
+                    <a href="publications.html" class="mt-4 inline-block text-emerald-500 underline uppercase text-xs">Return to Library</a>
+                </div>
+            `;
         }
 
+        // 2. Share Function
         function share(platform) {
             const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent(article ? article.title : "Research by Adesina S. Arojo");
+            const text = encodeURIComponent(article ? `Read "${article.title}" by Adesina S. Arojo` : "Research Publication");
             const links = {
                 whatsapp: `https://wa.me/?text=${text}%20${url}`,
                 twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`
